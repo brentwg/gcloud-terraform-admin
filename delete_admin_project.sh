@@ -16,7 +16,7 @@
 # ----------------
 OPTIND=1
 DEBUG=false
-ENV_FILE="gcp.env.doomhasspoken"
+ENV_FILE="gcp.env"
 
 
 # ------------
