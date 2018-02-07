@@ -11,6 +11,7 @@
 #
 # Brent Gawryluik
 # 2018-02-06
+# 2018-02-07
 # ------------------------------------------------------------------------
 
 # ----------------
@@ -164,6 +165,21 @@ gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
 gcloud organizations add-iam-policy-binding ${TF_VAR_org_id} \
   --member serviceAccount:terraform@${TF_ADMIN}.iam.gserviceaccount.com \
   --role roles/billing.user
+
+
+# ------------------------------------
+# Set up remote state in Cloud Storage
+# ------------------------------------
+echo ""
+echo "Setting up remote state in Cloud Storage..."
+gsutil mb -p ${TF_ADMIN} gs://${TF_ADMIN}
+
+if [ "${DEBUG}" = true ]; then
+  echo ""
+  echo "DEBUG"
+  echo "gsutil ls"
+  gsutil ls
+fi
 
 echo ""
 echo "END OF SCRIPT"

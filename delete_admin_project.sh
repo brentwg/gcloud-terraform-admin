@@ -9,6 +9,7 @@
 #
 # Brent Gawryluik
 # 2018-02-06
+# 2018-02-07
 # ------------------------------------------------------------------------
 
 # ----------------
@@ -66,6 +67,21 @@ if [ "${DEBUG}" = true ]; then
 fi
 
 
+# ------------------------------------
+# Delete remote state in Cloud Storage
+# ------------------------------------
+echo ""
+echo "Removing remote state in Cloud Storage..."
+gsutil rm -r gs://${TF_ADMIN}
+
+if [ "${DEBUG}" = true ]; then
+  echo ""
+  echo "DEBUG"
+  echo "gsutil ls"
+  gsutil ls
+fi
+
+
 # ---------------
 # Disable billing
 # ---------------
@@ -114,8 +130,9 @@ gcloud organizations remove-iam-policy-binding ${TF_VAR_org_id} \
 # Remove the JSON credentials file
 # --------------------------------
 echo ""
-echo "Removing the JSON credentials file"
+echo "Removing the JSON credentials file..."
 rm -fv ${TF_CREDS}
+
 
 echo ""
 echo "END OF SCRIPT"

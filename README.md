@@ -5,8 +5,7 @@ These scripts are used to create and destroy a Terraform Admin Project on Google
 The scripts were developed based on Dan Isla's tutorial, [Managing GCP Projects with Terraform](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform). As per the tutorial, the basic objectives of these scripts are as follows:  
 - Create a Terraform Admin Project for the service account  
 - Grant Organization-level permissions to the service account  
-
-    **NOTE**: Dan's tutorial also addresses the issue of creating a remote state bucket to store the `terraform.tfstate` file. I have decided to omit this functionality for these scripts.  
+- Create a remote backend bucket to store the Terraform state file  
 
 ## Dependencies  
 
@@ -70,3 +69,4 @@ To delete the Terraform Admin Project (as well as the service account and access
   - IAM
   - Compute Engine
 - Service Account permissions to create projects and assign billing accounts
+- Storage Cloud bucket (with versioning enabled)
