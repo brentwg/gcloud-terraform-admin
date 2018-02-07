@@ -21,6 +21,20 @@ DEBUG=false
 ENV_FILE="gcp.env"
 
 
+# --------------
+# Usage Function
+# --------------
+function usage() {
+  cat << EOF
+
+  Usage: $0 [OPTIONS]
+
+    -d  Enables DEBUG which increases output verbosity
+
+EOF
+}
+
+
 # ------------
 # Process ARGS
 # ------------
@@ -30,6 +44,7 @@ while getopts ":d" opt; do
       DEBUG=true
       ;;
     *)
+      usage
       exit 1
       ;;
   esac
